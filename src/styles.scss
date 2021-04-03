@@ -1,4 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
+@use "reset";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Lato:300,900');
+
+html,
+body {
+    height: 100%;
+    //color: white;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}

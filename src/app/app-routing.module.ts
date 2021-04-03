@@ -5,15 +5,15 @@ import { TasksListComponent } from './features/tasks/components/tasks-list/tasks
 import { TasksWorkspace } from './features/tasks/components/tasks-workspace/tasks-workspace.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'home',
+    path: '',
     component: LayoutComponent
-    , children: [
+    ,children: [
       { path: '', component: TasksListComponent, outlet: 'sidebar-outlet' },
       { path: '', component: TasksWorkspace, outlet: 'workspace-outlet' },
     ]
-  }
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
