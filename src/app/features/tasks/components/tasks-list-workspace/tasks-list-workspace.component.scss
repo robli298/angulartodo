@@ -1,0 +1,38 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .tasks-area {
+        flex: 10;
+    }
+
+    .tasks-control {
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__add {
+            flex: 1;
+            height: 100%;
+            border: none;
+            background-color: inherit;
+            color: inherit;
+            font-size: 0.8rem;
+            user-select: none;
+            outline: none;
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+
+            .material-icons {
+                font-size: 1.3rem;
+            }
+        }
+
+        &__add>* {
+            margin-right: 10px;
+        }
+    }
+}
