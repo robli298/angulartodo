@@ -7,7 +7,8 @@ import { throwIfAlreadyLoaded } from './module-import.guard';
     declarations: [LayoutComponent],
     imports: [
         RouterModule
-    ]
+    ],
+    exports: [LayoutComponent]
 })
 export class CoreModule {
     constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
