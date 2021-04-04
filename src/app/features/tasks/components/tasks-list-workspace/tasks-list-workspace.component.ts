@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TaskListModel } from '../../models/task-list.model';
 
 @Component({
   selector: 'app-tasks-list',
@@ -7,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksListWorkspaceComponent implements OnInit {
 
+  taskListModel$?: Observable<TaskListModel[]>;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   addTaskList() {
-
   }
-
 }
