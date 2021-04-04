@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TasksListComponent } from './components/tasks-list/tasks-list.component';
+import { TasksListWorkspaceComponent } from './components/tasks-list-workspace/tasks-list-workspace.component';
 import { TasksWorkspace } from './components/tasks-workspace/tasks-workspace.component';
 
 @NgModule({
-    declarations: [TasksListComponent, TasksWorkspace],
+    declarations: [TasksListWorkspaceComponent, TasksWorkspace],
     imports: [
         RouterModule
     ]
