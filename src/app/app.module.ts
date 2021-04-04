@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { FakeBackendInterceptor } from './fake-backend.interceptor';
+import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
