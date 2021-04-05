@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,11 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
 
     // app
-    AppRoutingModule
+    AppRoutingModule,
+
+    StoreModule.forRoot({}, {}),
+
+    EffectsModule.forRoot([])
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
