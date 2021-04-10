@@ -1,4 +1,5 @@
 export interface TaskModel {
-    key: number;
+    id: number;
     name: string
+    taskListId: number;
 }

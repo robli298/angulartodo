@@ -1,20 +1,38 @@
-[
-    {
-        "key": 1,
-        "name": "untitled list",
-        "tasks": [
-           {
-                "key": 1,
-                "name": "task one"
-           },
-            {
-                "key": 2,
-                "name": "task two"
-            },
-            {
-                "key": 3,
-                "name": "task three"
-            }
-        ]
+{
+    "tasksList": {
+        "0": {
+            "id": 1,
+            "name": "untitled list 1"
+        },
+        "1": {
+            "id": 2,
+            "name": "untitled list 2"
+        },
+        "2": {
+            "id": 3,
+            "name": "untitled list 3"
+        }
+    },
+    "tasks": {
+        "0": {
+            "id": 1,
+            "name": "task 1",
+            "tasksListId": 1
+        },
+        "1": {
+            "id": 2,
+            "name": "task 2",
+            "tasksListId": 2
+        },
+        "2": {
+            "id": 3,
+            "name": "task 3",
+            "tasksListId": 3
+        },
+        "3": {
+            "id": 4,
+            "name": "task 4",
+            "tasksListId": 3
+        }
     }
-]
+}
