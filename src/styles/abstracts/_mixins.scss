@@ -1,0 +1,7 @@
+@mixin responsiveManager($breakpoint) {
+    @if $breakpoint==control-area-remove {
+        @media (max-width: 50rem) {
+            @content;
+        }
+    }
+}

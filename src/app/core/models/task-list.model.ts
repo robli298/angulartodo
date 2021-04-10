@@ -1,7 +1,5 @@
-import { TaskModel } from "./task.model";
 
 export interface TaskListModel {
-    key: number;
+    id: number;
     name: string;
-    tasks: TaskModel[];
 }
