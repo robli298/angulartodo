@@ -18,7 +18,7 @@
         height: 100%;
     }
 
-    @include mixins.responsiveManager(tab-port) {
+    @include mixins.responsiveManager(control-area-remove) {
         .sidebar {
             display: none;
         }
