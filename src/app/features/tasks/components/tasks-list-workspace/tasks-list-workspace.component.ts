@@ -14,16 +14,19 @@ import { tasksList } from '../../store/tasks.selectors';
 export class TasksListWorkspaceComponent implements OnInit {
 
   taskListModel$?: Observable<TaskListModel[]>;
+  selectedListId: number = 1;
 
   constructor(private store: Store<TasksListState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(requestTasksList());
     this.taskListModel$ = this.store.select(tasksList);
-
-    this.taskListModel$.subscribe(t => console.log(t))
   }
 
-  addTaskList() {
+  onAddList(): void {
+  }
+
+  onSelectedList(id: number): void {
+    this.selectedListId = id;
   }
 }

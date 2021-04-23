@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { TasksListWorkspaceComponent } from './components/tasks-list-workspace/tasks-list-workspace.component';
 import { TasksWorkspace } from './components/tasks-workspace/tasks-workspace.component';
 import { TasksEffects } from './store/tasks.effects';
@@ -13,6 +14,7 @@ import { TasksRoutingModule } from './tasks-routing.module';
         TasksRoutingModule,
         StoreModule.forFeature(tasksListFeatureKey, tasksListReducer),
         EffectsModule.forFeature([TasksEffects]),
+        SharedModule
     ]
 })
 export class TasksModule {

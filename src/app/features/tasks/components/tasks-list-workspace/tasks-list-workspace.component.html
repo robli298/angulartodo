@@ -1,10 +1,21 @@
 <div class="tasks-area">
+    <div class="tasks-area__list_area">
+        <ul>
+            <li class="tasks_area__list" *ngFor="let list of taskListModel$ | async" (click)="onSelectedList(list.id)"
+                [ngClass]="{'selected-list' : list.id === selectedListId}">
+                <span class="material-icons">
+                    list
+                </span>
+                <span>{{list.name}}</span>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="tasks-control">
-    <button (click)="addTaskList()" class="tasks-control__add">
+    <button (click)="onAddList()" class="tasks-control__add">
         <span class="material-icons">
             add
         </span>
-            New List
+        New List
     </button>
 </div>
