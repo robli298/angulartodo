@@ -10,11 +10,11 @@ import { tasksListSelectAllSelector } from "./store/tasks.selectors";
     providedIn: 'root'
 })
 export class TasksFacade {
-    constructor(private store: Store<TasksListState>) {
+    constructor(private _store: Store<TasksListState>) {
     }
 
     getTasksList(): Observable<TaskListModel[]> {
-        this.store.dispatch(requestTasksList());
-        return this.store.select(tasksListSelectAllSelector);
+        this._store.dispatch(requestTasksList());
+        return this._store.select(tasksListSelectAllSelector);
     }
 }

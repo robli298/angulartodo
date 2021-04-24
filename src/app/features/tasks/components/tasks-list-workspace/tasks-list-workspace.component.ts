@@ -13,10 +13,10 @@ export class TasksListWorkspaceComponent implements OnInit {
   tasksList$?: Observable<TaskListModel[]>;
   selectedListId: number = 1;
 
-  constructor(private tasksFacade: TasksFacade) { }
+  constructor(private _tasksFacade: TasksFacade) { }
 
   ngOnInit(): void {
-    this.tasksList$ = this.tasksFacade.getTasksList();
+    this.tasksList$ = this._tasksFacade.getTasksList();
   }
 
   onAddList(): void {
