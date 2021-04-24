@@ -1,6 +1,9 @@
 @use 'colors';
+@use 'mixins';
 
 :host {
+
+    @include mixins.no-select;
 
     display: flex;
     flex-direction: column;
