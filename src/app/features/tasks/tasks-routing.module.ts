@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { TasksListWorkspaceComponent } from "./components/tasks-list-workspace/tasks-list-workspace.component";
-import { TasksWorkspace } from "./components/tasks-workspace/tasks-workspace.component";
+import { TasksListWorkspaceComponent } from "./containers/tasks-list-workspace/tasks-list-workspace.component";
+import { TasksWorkspace } from "./containers/tasks-workspace/tasks-workspace.component";
 
 const routes: Routes = [
     { path: '', component: TasksListWorkspaceComponent, outlet: 'sidebar-outlet' },
