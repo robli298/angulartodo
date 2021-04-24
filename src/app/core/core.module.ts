@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { throwIfAlreadyLoaded } from './module-import.guard';
 
+/**
+ * This module defines the singleton services, single-instance components, configuration, and exports any third modules needed
+ * in AppModule. This module is suppose to import only once in AppModule.
+ */
 @NgModule({
     declarations: [LayoutComponent],
     imports: [
@@ -12,7 +16,7 @@ import { throwIfAlreadyLoaded } from './module-import.guard';
     ]
 })
 export class CoreModule {
-    constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+    constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
         throwIfAlreadyLoaded(parentModule, 'CoreModule');
     }
 }

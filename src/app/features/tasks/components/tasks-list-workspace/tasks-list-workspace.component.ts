@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TaskListModel } from '../../../../core/models/task-list.model';
-import { requestTasksList } from '../../store/tasks.actions';
-import { TasksListState } from '../../store/tasks.reducer';
-import { tasksList } from '../../store/tasks.selectors';
+import { TasksFacade } from '../../tasks.facede';
 
 @Component({
   selector: 'app-tasks-list',
@@ -13,14 +10,13 @@ import { tasksList } from '../../store/tasks.selectors';
 })
 export class TasksListWorkspaceComponent implements OnInit {
 
-  taskListModel$?: Observable<TaskListModel[]>;
+  tasksList$?: Observable<TaskListModel[]>;
   selectedListId: number = 1;
 
-  constructor(private store: Store<TasksListState>) { }
+  constructor(private tasksFacade: TasksFacade) { }
 
   ngOnInit(): void {
-    this.store.dispatch(requestTasksList());
-    this.taskListModel$ = this.store.select(tasksList);
+    this.tasksList$ = this.tasksFacade.getTasksList();
   }
 
   onAddList(): void {
