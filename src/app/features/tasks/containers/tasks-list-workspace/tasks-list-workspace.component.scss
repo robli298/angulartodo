@@ -46,7 +46,6 @@
             border: none;
             background-color: inherit;
             color: inherit;
-            user-select: none;
             outline: none;
             padding-left: 15px;
             display: flex;
@@ -55,10 +54,10 @@
             .material-icons {
                 font-size: 1.6rem;
             }
-        }
 
-        &__add>* {
-            margin-right: 10px;
+            &>* {
+                margin-right: 10px;
+            }
         }
     }
 }

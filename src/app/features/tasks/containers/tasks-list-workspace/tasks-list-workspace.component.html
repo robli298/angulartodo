@@ -1,6 +1,6 @@
 <div class="tasks-area">
     <div class="tasks-area__list_area">
-        <ul>
+        <ul *ngLet="selectedListId$ | async as selectedListId">
             <li class="tasks_area__list" *ngFor="let list of tasksList$ | async" (click)="onSelectedList(list.id)"
                 [ngClass]="{'selected-list' : list.id === selectedListId}">
                 <span class="material-icons">
