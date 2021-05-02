@@ -11,7 +11,7 @@ import { LetDirective } from './directives/let.directive';
     imports: [
         CommonModule
     ],
-    exports: [CommonModule]
+    exports: [CommonModule, LetDirective]
 })
 export class SharedModule {
 
