@@ -11,11 +11,17 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 import { appReducer } from './core/store/app.reducer';
+import { ContentItemComponent } from './page-header/content-item/content-item.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
 import { SharedModule } from './shared/shared.module';
+import { MyButtonComponent } from './page-header/my-button/my-button.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageHeaderComponent,
+    ContentItemComponent,
+    MyButtonComponent
   ],
   imports: [
     // core and shared
