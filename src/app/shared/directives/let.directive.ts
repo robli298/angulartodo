@@ -20,6 +20,6 @@ export class LetDirective<T> {
     ngLet: T | null = null;
 
     constructor(@Inject(ViewContainerRef) private _viewContainerRef: ViewContainerRef, @Inject(TemplateRef) private _templateRef: TemplateRef<LetContext<T>>) {
-        _viewContainerRef.createEmbeddedView(_templateRef, new LetContext<T>(this));
+        this._viewContainerRef.createEmbeddedView(_templateRef, new LetContext<T>(this));
     }
 }
