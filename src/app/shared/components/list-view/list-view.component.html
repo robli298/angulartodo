@@ -1,20 +1,14 @@
-<div class="list-container">
-  <ul>
-    <li
-      class="tasks_area__list"
-      *ngFor="let item of items"
-      (click)="itemSelected.emit(item)"
-      [ngClass]="{ 'selected-list': item.id === itemSelectedId }"
-    >
-      <ng-container
-        [ngTemplateOutlet]="defaultItemTpl"
-        [ngTemplateOutletContext]="{ item: item }"
-      ></ng-container>
-    </li>
-  </ul>
-</div>
+<ul>
+  <li *ngFor="let item of items" (click)="selectOption(item)">
+    <ng-container
+      [ngTemplateOutlet]="listViewItemTpl || defaultItemTpl"
+      [ngTemplateOutletContext]="{ $implicit: item }"
+    ></ng-container>
+  </li>
+</ul>
 
 <ng-template #defaultItemTpl let-item="item">
-  <span class="material-icons"> list </span>
   <span>{{ item.label }}</span>
 </ng-template>
+
+<!-- How implicit actually works? -->
