@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import {
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
+import { ListViewItemDirective } from '../../directives/list-view-item.directive';
 
 export interface IItem {
-    id: number
-    label: string
+  id: number;
+  label: string;
 }
 
 @Component({
@@ -15,16 +21,23 @@ export class ListViewComponent {
   items: IItem[] = [];
 
   @Output()
-  itemSelected: EventEmitter<IItem> = new EventEmitter<IItem>();
+  selectionChanged: EventEmitter<IItem> = new EventEmitter<IItem>();
 
-  itemSelectedId!: number;
+  @ContentChild(ListViewItemDirective, { static: true })
+  listViewItemDirective!: ListViewItemDirective;
+
+  selectedItem!: IItem;
 
   constructor() {
-    // not implemented yet
+    // no implementation needed
   }
 
-  onItemSelected(item: IItem) {
-    this.itemSelectedId = item.id;
-    this.itemSelected.emit(item);
+  selectOption(item: IItem) {
+    this.selectedItem = item;
+    this.selectionChanged.emit(item);
+  }
+
+  get listViewItemTpl() {
+    return this.listViewItemDirective?.tpl;
   }
 }
