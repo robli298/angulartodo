@@ -1,63 +1,62 @@
-@use 'colors';
-@use 'mixins';
+@use "colors";
+@use "mixins";
 
 :host {
+  @include mixins.no-select;
 
-    @include mixins.no-select;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
+  ::ng-deep app-list-view {
+    &__list,
+    li {
+      padding: 0.65rem;
+      display: flex;
+      align-items: center;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .material-icons {
+      padding-right: 0.65rem;
+    }
+
+    .selected-item {
+      background-color: lighten(colors.$dark-gray, 50%);
+    }
+  }
+
+  .tasks-area {
+    flex-grow: 1;
+  }
+
+  .tasks-control {
+    height: 45px;
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
 
-    .tasks-area {
-        flex-grow: 1;
+    &__add {
+      flex: 1;
+      height: 100%;
+      border: none;
+      background-color: inherit;
+      color: inherit;
+      outline: none;
+      padding-left: 15px;
+      display: flex;
+      align-items: center;
 
-        ul {
-            list-style-type: none;
-        }
+      .material-icons {
+        font-size: 1.6rem;
+      }
 
-        &__list,
-        li {
-            padding: 0.65rem;
-            display: flex;
-            align-items: center;
-        }
-
-        &__list,
-        .material-icons {
-            padding-right: 0.65rem;
-        }
-
-        &__list,
-        .selected-list {
-            background-color: lighten(colors.$dark-gray, 50%);
-        }
+      & > * {
+        margin-right: 10px;
+      }
     }
-
-    .tasks-control {
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &__add {
-            flex: 1;
-            height: 100%;
-            border: none;
-            background-color: inherit;
-            color: inherit;
-            outline: none;
-            padding-left: 15px;
-            display: flex;
-            align-items: center;
-
-            .material-icons {
-                font-size: 1.6rem;
-            }
-
-            &>* {
-                margin-right: 10px;
-            }
-        }
-    }
+  }
 }

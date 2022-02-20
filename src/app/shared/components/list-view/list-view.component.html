@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of items" (click)="selectOption(item)">
+  <li *ngFor="let item of items" (click)="selectOption(item)" [ngClass]="{'selected-item': selectedItem?.id === item.id}">
     <ng-container
       [ngTemplateOutlet]="listViewItemTpl || defaultItemTpl"
       [ngTemplateOutletContext]="{ $implicit: item }"
