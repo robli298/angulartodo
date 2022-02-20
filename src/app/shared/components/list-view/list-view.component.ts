@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ContentChild,
   EventEmitter,
@@ -15,6 +16,7 @@ export interface IItem {
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListViewComponent {
   @Input()
