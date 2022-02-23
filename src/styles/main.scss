@@ -14,3 +14,5 @@ body {
 html {
     font-size: 10px;
 }
+
+$selected-item-background-color: lighten(colors.$dark-gray, 50%);

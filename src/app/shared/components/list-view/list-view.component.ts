@@ -16,7 +16,8 @@ export interface IItem {
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent {
   @Input()
