@@ -13,15 +13,27 @@ export interface IItem {
   label: string;
 }
 
+export interface Options {
+  height?: number;
+}
+
+const defaultOptions = {};
+
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./list-view.component.scss']
+  styleUrls: ['./list-view.component.scss'],
 })
 export class ListViewComponent {
+  _options: Options = defaultOptions;
+
   @Input()
   items: IItem[] = [];
+
+  @Input() set options(options: Options) {
+    this._options = { ...defaultOptions, ...options };
+  }
 
   @Output()
   selectionChanged: EventEmitter<IItem> = new EventEmitter<IItem>();
@@ -42,5 +54,9 @@ export class ListViewComponent {
 
   get listViewItemTpl() {
     return this.listViewItemDirective?.tpl;
+  }
+
+  get heigh() {
+    return this._options.height ? this._options.height + 'px' : '100%';
   }
 }
