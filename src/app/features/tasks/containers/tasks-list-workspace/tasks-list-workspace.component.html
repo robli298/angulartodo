@@ -2,7 +2,6 @@
   <div class="tasks-area__list_area" *ngIf="tasksList$ | async">
     <app-list-view
       [items]="items"
-
       (selectionChanged)="onSelectedTaskList($event)"
     >
       <!-- list item template-->

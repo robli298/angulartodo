@@ -24,6 +24,9 @@ const defaultOptions = {};
   templateUrl: './list-view.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./list-view.component.scss'],
+  host: {
+    class: 'list-view-host'
+  }
 })
 export class ListViewComponent {
   _options: Options = defaultOptions;
