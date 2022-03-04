@@ -1,10 +1,11 @@
 <ul>
-  <li *ngFor="let item of items" (click)="selectOption(item)" [ngClass]="{'selected-item': selectedItem?.id === item.id}">
-    <ng-container
-      [ngTemplateOutlet]="listViewItemTpl || defaultItemTpl"
-      [ngTemplateOutletContext]="{ $implicit: item }"
-    ></ng-container>
-  </li>
+  <cdk-virtual-scroll-viewport style="height: 700px" itemSize="90">
+    <li *cdkVirtualFor="let item of items" (click)="selectOption(item)"
+      [ngClass]="{'selected-item': selectedItem?.id === item.id}">
+      <ng-container [ngTemplateOutlet]="listViewItemTpl || defaultItemTpl"
+        [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+    </li>
+  </cdk-virtual-scroll-viewport>
 </ul>
 
 <ng-template #defaultItemTpl let-item="item">
