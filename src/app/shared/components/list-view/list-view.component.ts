@@ -1,14 +1,19 @@
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { DOCUMENT } from '@angular/common';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChild,
   ElementRef,
   EventEmitter,
+  Inject,
   Input,
+  OnInit,
   Output,
   ViewChild
 } from '@angular/core';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { ListViewItemDirective } from '../../directives/list-view-item.directive';
 
 export interface IItem {
@@ -17,7 +22,6 @@ export interface IItem {
 }
 
 export interface Options {
-  height?: number;
   itemSize?: number;
 }
 
@@ -30,9 +34,12 @@ const defaultOptions = {};
   styleUrls: ['./list-view.component.scss'],
   host: {
     class: 'list-view-host'
-  }
+  },
+  providers: [
+    { provide: Window, useValue: window }
+  ]
 })
-export class ListViewComponent {
+export class ListViewComponent implements OnInit {
   _options: Options = defaultOptions;
 
   @Input()
@@ -53,6 +60,8 @@ export class ListViewComponent {
   constructor(private _elementRef: ElementRef) {
     // no implementation needed
   }
+  ngOnInit(): void {
+  }
 
   selectOption(item: IItem) {
     this.selectedItem = item;
@@ -61,10 +70,6 @@ export class ListViewComponent {
 
   get listViewItemTpl() {
     return this.listViewItemDirective?.tpl;
-  }
-
-  get heigh() {
-    return this._options.height ? this._options.height + 'px' : '100%';
   }
 
   get parentHeight() {
