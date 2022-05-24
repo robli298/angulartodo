@@ -34,7 +34,7 @@ export class TasksListWorkspaceComponent implements OnInit {
   }
 
   onAddList(): void {
-    console.log('List added');
+    this._tasksFacade.addNewTaskList();
   }
 
   onSelectedList(id: number): void {
