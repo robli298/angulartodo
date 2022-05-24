@@ -5,6 +5,7 @@ import { debounceTime, takeUntil } from "rxjs/operators";
 
 // temporary solution to solve re-render when the viewport or content size changes
 // https://github.com/angular/components/issues/10117
+
 @Directive({
     selector: 'cdk-virtual-scroll-viewport'
 })
@@ -17,7 +18,6 @@ export class VirtualScrollViewportDirective implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         fromEvent(this._window, 'resize').pipe(debounceTime(10), takeUntil(this.destroy$)).subscribe(() => {
-            console.log('test');
             this._viewportComponent.checkViewportSize()
         })
     }

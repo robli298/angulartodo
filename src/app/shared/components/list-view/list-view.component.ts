@@ -60,6 +60,7 @@ export class ListViewComponent implements OnInit {
   constructor(private _elementRef: ElementRef) {
     // no implementation needed
   }
+
   ngOnInit(): void {
   }
 

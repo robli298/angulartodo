@@ -12,6 +12,19 @@ import { CoreModule } from './core/core.module';
 import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 import { appReducer } from './core/store/app.reducer';
 import { SharedModule } from './shared/shared.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "m",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: ""
+};
 
 @NgModule({
   declarations: [
@@ -33,6 +46,10 @@ import { SharedModule } from './shared/shared.module';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreModule.forRoot(appReducer, {}),
     EffectsModule.forRoot([]),
+
+    // firebase
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
