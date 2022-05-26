@@ -1,11 +1,11 @@
-import { ArrayUtils } from "./array.utils";
+import { ArrayUtils } from './array.utils';
 
 describe('ArrayUtils', () => {
 
     type MyType = {
         id: number,
         name: string
-    }
+    };
 
     const array = [
         {
@@ -20,7 +20,7 @@ describe('ArrayUtils', () => {
             id: 3,
             name: 'R'
         }
-    ]
+    ];
 
     it('should return one element with id = 2', () => {
         expect(ArrayUtils.getBy<MyType, keyof MyType>(array, 'id', 2)?.id).toEqual(2);

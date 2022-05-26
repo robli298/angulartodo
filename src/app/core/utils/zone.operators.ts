@@ -1,6 +1,6 @@
-import { NgZone } from "@angular/core";
-import { MonoTypeOperatorFunction, Observable, Observer, Operator, TeardownLogic } from "rxjs";
-import { map } from "rxjs/operators";
+import { NgZone } from '@angular/core';
+import { MonoTypeOperatorFunction, Observable, Observer, Operator, TeardownLogic } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class ZoneFreeOperator<T> implements Operator<T, T> {
     constructor(private readonly _zone: NgZone) { }

@@ -16,6 +16,7 @@ export class TasksListWorkspaceComponent implements OnInit {
 
   items: IItem[] = [];
 
+  // tslint:disable-next-line: variable-name
   constructor(private _tasksFacade: TasksFacade) {}
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class TasksListWorkspaceComponent implements OnInit {
     this._tasksFacade.selectTasksList(id);
   }
 
-  onSelectedTaskList(taskList: IItem) {
+  onSelectedTaskList(taskList: IItem): void {
     console.log(taskList);
   }
 }

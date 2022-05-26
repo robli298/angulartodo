@@ -16,14 +16,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "m",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
-  measurementId: ""
+  apiKey: 'AIzaSyB4m2O3zpN3lZGfwNBbGGg9jLno7l6sj8w',
+  authDomain: 'angular-todo-4359a.firebaseapp.com',
+  databaseURL: 'https://angular-todo-4359a-default-rtdb.firebaseio.com',
+  projectId: 'angular-todo-4359a',
+  storageBucket: 'angular-todo-4359a.appspot.com',
+  messagingSenderId: '829063093139',
+  appId: '1:829063093139:web:43091bdee7a536ea016666',
+  measurementId: 'G-CJS7SF7WC6'
 };
 
 @NgModule({
