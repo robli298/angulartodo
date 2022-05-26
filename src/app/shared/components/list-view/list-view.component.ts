@@ -1,5 +1,6 @@
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { DOCUMENT } from '@angular/common';
+import { TemplateRef } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -64,16 +65,16 @@ export class ListViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectOption(item: IItem) {
+  selectOption(item: IItem): void {
     this.selectedItem = item;
     this.selectionChanged.emit(item);
   }
 
-  get listViewItemTpl() {
+  get listViewItemTpl(): TemplateRef<IItem> {
     return this.listViewItemDirective?.tpl;
   }
 
-  get parentHeight() {
+  get parentHeight(): string {
     return 'height:' + this._elementRef.nativeElement.parentElement.offsetHeight + 'px';
   }
 }

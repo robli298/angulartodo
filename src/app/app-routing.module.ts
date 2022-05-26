@@ -5,14 +5,15 @@ import { LayoutComponent } from './core/components/layout/layout.component';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent
-    ,loadChildren: () => import('./features/tasks/tasks.module').then(m => m.TasksModule)
+    component: LayoutComponent,
+    loadChildren: () =>
+      import('./features/tasks/tasks.module').then((m) => m.TasksModule),
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

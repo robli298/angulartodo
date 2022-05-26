@@ -21,10 +21,10 @@ export class TasksFacade {
     return this._store.select(tasksListSelectAllSelector);
   }
 
-  selectTasksList(id: number) {
+  selectTasksList(id: number): void {
     this._store.dispatch(
       tasksListSelected({
-        id: id,
+        id,
       })
     );
   }
@@ -33,6 +33,7 @@ export class TasksFacade {
     return this._store.select(selectedTasksListId);
   }
 
+  // TODO fix
   addNewTaskList() {
     return this._store.select(tasksListSelectAllSelector).pipe(
       tap((taskLists) => {

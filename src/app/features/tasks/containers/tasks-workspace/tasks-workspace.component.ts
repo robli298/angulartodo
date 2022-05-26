@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'app-tasks-workspace',
     templateUrl: './tasks-workspace.component.html'
 })
-export class TasksWorkspace implements OnInit {
+export class TasksWorkspaceComponent implements OnInit {
 
     constructor() { }
     ngOnInit(): void {
