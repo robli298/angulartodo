@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs/operators';
+import { TasksListModel } from '../models/tasks-list.model';
 
 export interface TasksAPIResponseModel {
   id: number;
@@ -14,15 +15,17 @@ export interface TasksAPIResponseModel {
   }[];
 }
 
+const TASKS_LIST_COLLECTION_NAME = 'taskslist';
+
 @Injectable({
   providedIn: 'root',
 })
 export class TasksApiService {
   constructor(private db: AngularFirestore) {}
 
-  getTaskList(): Observable<TasksAPIResponseModel[]> {
+  getTaskList(): Observable<TasksListModel[]> {
     return this.db
-      .collection('taskslist')
+      .collection(TASKS_LIST_COLLECTION_NAME)
       .snapshotChanges()
       .pipe(
         map((response) =>

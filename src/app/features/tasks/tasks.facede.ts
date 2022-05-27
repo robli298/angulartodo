@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { TaskListModel } from 'src/app/core/models/task-list.model';
-import { requestTasksList, tasksListSelected } from './store/tasks.actions';
+import { TasksListModel } from 'src/app/core/models/tasks-list.model';
+import { tasksListSelected, loadTasksLists } from './store/tasks.actions';
 import { TasksListState } from './store/tasks.reducer';
 import {
   selectedTasksListId,
@@ -14,15 +13,15 @@ import {
   providedIn: 'root',
 })
 export class TasksFacade {
-  constructor(private _store: Store<TasksListState>) {}
+  constructor(private store: Store<TasksListState>) {}
 
-  getTasksList(): Observable<TaskListModel[]> {
-    this._store.dispatch(requestTasksList());
-    return this._store.select(tasksListSelectAllSelector);
+  getTasksList(): Observable<TasksListModel[]> {
+    this.store.dispatch(loadTasksLists());
+    return this.store.select(tasksListSelectAllSelector);
   }
 
   selectTasksList(id: number): void {
-    this._store.dispatch(
+    this.store.dispatch(
       tasksListSelected({
         id,
       })
@@ -30,16 +29,6 @@ export class TasksFacade {
   }
 
   getTasksListSelectedId(): Observable<number | null> {
-    return this._store.select(selectedTasksListId);
-  }
-
-  // TODO fix
-  addNewTaskList() {
-    return this._store.select(tasksListSelectAllSelector).pipe(
-      tap((taskLists) => {
-        const id = taskLists.length + 1;
-        const name = `untitled list ${id}`;
-      })
-    );
+    return this.store.select(selectedTasksListId);
   }
 }

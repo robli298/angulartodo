@@ -1,6 +1,15 @@
 import { createAction, props } from '@ngrx/store';
-import { TaskListModel } from 'src/app/core/models/task-list.model';
+import { TasksListModel } from 'src/app/core/models/tasks-list.model';
 
-export const requestTasksList = createAction('[Task/API] Request Load Task List');
-export const loadTasksList = createAction('[Task] Load Tasks List', props<{ tasksList: TaskListModel[] }>());
-export const tasksListSelected = createAction('[Task] Select Tasks List', props<{ id: number }>());
+export const loadTasksLists = createAction(
+  '[Task Lists] Load Task List'
+);
+export const tasksListsLoaded = createAction(
+  '[Tasks Effect] Tasks List',
+  props<{ tasksLists: TasksListModel[] }>()
+);
+
+export const tasksListSelected = createAction(
+  '[Task Lists] Select Tasks List',
+  props<{ id: number }>()
+);
