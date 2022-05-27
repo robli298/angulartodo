@@ -1,6 +1,6 @@
-export interface TaskModel {
+
+export interface TasksListModel {
     id: number;
     name: string;
     index: number;
-    tasksListId: number;
 }

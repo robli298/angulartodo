@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { IItem } from 'src/app/shared/components/list-view/list-view.component';
-import { TaskListModel } from '../../../../core/models/task-list.model';
+import { TasksListModel } from '../../../../core/models/tasks-list.model';
 import { TasksFacade } from '../../tasks.facede';
 
 @Component({
@@ -11,7 +11,7 @@ import { TasksFacade } from '../../tasks.facede';
   styleUrls: ['./tasks-list-workspace.component.scss'],
 })
 export class TasksListWorkspaceComponent implements OnInit {
-  tasksList$?: Observable<TaskListModel[]>;
+  tasksList$?: Observable<TasksListModel[]>;
   selectedListId$?: Observable<number | null>;
 
   items: IItem[] = [];
@@ -25,7 +25,6 @@ export class TasksListWorkspaceComponent implements OnInit {
         if (tasksLists && tasksLists[0]) {
           this._tasksFacade.selectTasksList(tasksLists[0].id);
         }
-
         this.items = tasksLists.map((task) => {
           return { label: task.name, id: task.id };
         });
@@ -35,7 +34,7 @@ export class TasksListWorkspaceComponent implements OnInit {
   }
 
   onAddList(): void {
-    this._tasksFacade.addNewTaskList();
+    console.log('Add list');
   }
 
   onSelectedList(id: number): void {

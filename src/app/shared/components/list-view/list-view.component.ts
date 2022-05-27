@@ -11,7 +11,7 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -34,11 +34,9 @@ const defaultOptions = {};
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./list-view.component.scss'],
   host: {
-    class: 'list-view-host'
+    'class': 'list-view-host'
   },
-  providers: [
-    { provide: Window, useValue: window }
-  ]
+  providers: [{ provide: Window, useValue: window }],
 })
 export class ListViewComponent implements OnInit {
   _options: Options = defaultOptions;
@@ -62,8 +60,7 @@ export class ListViewComponent implements OnInit {
     // no implementation needed
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   selectOption(item: IItem): void {
     this.selectedItem = item;
@@ -75,6 +72,10 @@ export class ListViewComponent implements OnInit {
   }
 
   get parentHeight(): string {
-    return 'height:' + this._elementRef.nativeElement.parentElement.offsetHeight + 'px';
+    return (
+      'height:' +
+      this._elementRef.nativeElement.parentElement.offsetHeight +
+      'px'
+    );
   }
 }
