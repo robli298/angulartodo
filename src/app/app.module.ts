@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,6 +14,10 @@ import { appReducer } from './core/store/app.reducer';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {
+  AppConfig,
+  AppConfigService,
+} from './core/services/app-config.service';
 
 const firebaseConfig = {
   apiKey: '',
@@ -23,14 +27,17 @@ const firebaseConfig = {
   storageBucket: '',
   messagingSenderId: '',
   appId: '',
-  measurementId: ''
+  measurementId: '',
 };
 
-@NgModule({
-  declarations: [
-    AppComponent,
+export function initConfig(
+  appConfigService: AppConfigService
+): () => Promise<AppConfig | void> {
+  return () => appConfigService.loadConfig();
+}
 
-  ],
+@NgModule({
+  declarations: [AppComponent],
   imports: [
     // core and shared
     CoreModule,
@@ -43,19 +50,30 @@ const firebaseConfig = {
     // app
     AppRoutingModule,
 
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     StoreModule.forRoot(appReducer, {}),
     EffectsModule.forRoot([]),
 
     // firebase
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: FakeBackendInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: FakeBackendInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfig,
+      deps: [AppConfigService],
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
