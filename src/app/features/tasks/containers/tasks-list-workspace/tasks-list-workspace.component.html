@@ -1,6 +1,19 @@
 <div class="tasks-area">
-  <div class="tasks-area__list_area" *ngIf="tasksList$ | async">
-    <app-list-view [items]="items" [options]="{ itemSize: 37 }" (selectionChanged)="onSelectedTaskList($event)">
+  <div class="tasks-area__list_area">
+    <ngx-skeleton-loader
+      *ngIf="isLoading"
+      count="2"
+      appearance="line"
+      animation="pulse"
+    ></ngx-skeleton-loader>
+
+    
+    <app-list-view
+      *ngIf="tasksList$ | async"
+      [items]="items"
+      [options]="{ itemSize: 37 }"
+      (selectionChanged)="onSelectedTaskList($event)"
+    >
       <!-- list item template-->
       <ng-template appListViewItem let-item>
         <span class="material-icons"> list </span>

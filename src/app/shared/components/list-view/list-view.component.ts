@@ -34,7 +34,7 @@ const defaultOptions = {};
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./list-view.component.scss'],
   host: {
-    'class': 'list-view-host'
+    class: 'list-view-host',
   },
   providers: [{ provide: Window, useValue: window }],
 })
@@ -56,7 +56,7 @@ export class ListViewComponent implements OnInit {
 
   selectedItem!: IItem;
 
-  constructor(private _elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef) {
     // no implementation needed
   }
 
@@ -74,7 +74,7 @@ export class ListViewComponent implements OnInit {
   get parentHeight(): string {
     return (
       'height:' +
-      this._elementRef.nativeElement.parentElement.offsetHeight +
+      this.elementRef.nativeElement.parentElement.offsetHeight +
       'px'
     );
   }

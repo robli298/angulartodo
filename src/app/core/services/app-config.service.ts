@@ -2,16 +2,17 @@ import { getNumberOfCurrencyDigits } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-export interface AppConfig {
-}
+export interface AppConfig {}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppConfigService {
+  config!: AppConfig;
   loaded = false;
 
   constructor(private http: HttpClient) {}
+
   loadConfig(): Promise<AppConfig | void> {
     return this.http
       .get<AppConfig>('/assets/app.config.json')
@@ -22,11 +23,11 @@ export class AppConfigService {
       });
   }
 
-  get config(): AppConfig {
+  getConfig(): AppConfig {
     return this.config;
   }
 
-  set config(config: AppConfig) {
+  setConfig(config: AppConfig): void {
     this.config = config;
   }
 }

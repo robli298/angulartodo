@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { TasksListModel } from 'src/app/core/models/tasks-list.model';
 import { tasksListSelected, loadTasksLists } from './store/tasks.actions';
 import { TasksListState } from './store/tasks.reducer';
@@ -17,7 +18,7 @@ export class TasksFacade {
 
   getTasksList(): Observable<TasksListModel[]> {
     this.store.dispatch(loadTasksLists());
-    return this.store.select(tasksListSelectAllSelector);
+    return this.store.select(tasksListSelectAllSelector).pipe(delay(2000));
   }
 
   selectTasksList(id: number): void {
