@@ -1,9 +1,17 @@
 <ul>
-  <cdk-virtual-scroll-viewport [attr.style]="parentHeight" [itemSize]="_options.itemSize">
-    <li *cdkVirtualFor="let item of items" (click)="selectOption(item)"
-      [ngClass]="{'selected-item': selectedItem?.id === item.id}">
-      <ng-container [ngTemplateOutlet]="listViewItemTpl || defaultItemTpl"
-        [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+  <cdk-virtual-scroll-viewport
+    [attr.style]="parentHeight"
+    [itemSize]="_options.itemSize"
+  >
+    <li
+      *cdkVirtualFor="let item of items"
+      (click)="selectOption(item)"
+      [ngClass]="{ 'selected-item': selectedItem?.id === item.id }"
+    >
+      <ng-container
+        [ngTemplateOutlet]="listViewItemTpl || defaultItemTpl"
+        [ngTemplateOutletContext]="{ $implicit: item }"
+      ></ng-container>
     </li>
   </cdk-virtual-scroll-viewport>
 </ul>

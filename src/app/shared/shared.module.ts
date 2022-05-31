@@ -11,13 +11,18 @@ import { VirtualScrollViewportDirective } from './directives/virtual-scroll-view
  * can be imported by any feature module.
  */
 @NgModule({
-    declarations: [LetDirective, ListViewComponent, ListViewItemDirective, VirtualScrollViewportDirective],
-    imports: [
-        CommonModule,
-        ScrollingModule
-    ],
-    exports: [CommonModule, LetDirective, ListViewComponent, ListViewItemDirective]
+  declarations: [
+    LetDirective,
+    ListViewComponent,
+    ListViewItemDirective,
+    VirtualScrollViewportDirective,
+  ],
+  imports: [CommonModule, ScrollingModule],
+  exports: [
+    CommonModule,
+    LetDirective,
+    ListViewComponent,
+    ListViewItemDirective,
+  ],
 })
-export class SharedModule {
-
-}
+export class SharedModule {}
