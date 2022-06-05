@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, Subject, throwError } from 'rxjs';
-import { catchError, finalize, mergeMap, take, tap } from 'rxjs/operators';
+import {
+  catchError,
+  finalize,
+  last,
+  map,
+  mergeMap,
+  take,
+  tap,
+} from 'rxjs/operators';
 import { IItem } from 'src/app/shared/components/list-view/list-view.component';
 import { TasksListModel } from '../../../../core/models/tasks-list.model';
 import { TasksFacade } from '../../tasks.facede';
@@ -11,31 +19,21 @@ import { TasksFacade } from '../../tasks.facede';
   styleUrls: ['./tasks-list-workspace.component.scss'],
 })
 export class TasksListWorkspaceComponent implements OnInit {
-  tasksList$?: Observable<TasksListModel[]>;
+  tasksList$?: Observable<IItem[] | null>;
   selectedListId$?: Observable<number | null>;
 
-  items: IItem[] = [];
-  isLoading = false;
-
-  // tslint:disable-next-line: variable-name
   constructor(private tasksFacade: TasksFacade) {}
 
   // TODO select the first item as default selection
   ngOnInit(): void {
-    this.isLoading = true;
     this.tasksList$ = this.tasksFacade.getTasksList().pipe(
-      tap((tasksLists) => {
-        this.items = tasksLists.map((task) => {
-          return { label: task.name, id: task.id };
-        });
-        this.isLoading = false;
-      }),
-      catchError((e) => {
-        this.isLoading = false;
-        return throwError(e);
-      })
+     /* map((result) =>
+        result.map((item) => {
+          return { label: item.name, id: item.id };
+        })
+      ),*/
+      map(result => null)
     );
-
     this.selectedListId$ = this.tasksFacade.getTasksListSelectedId();
   }
 

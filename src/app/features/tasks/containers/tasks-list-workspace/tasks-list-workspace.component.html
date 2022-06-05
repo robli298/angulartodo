@@ -1,15 +1,7 @@
 <div class="tasks-area">
   <div class="tasks-area__list_area">
-    <ngx-skeleton-loader
-      *ngIf="isLoading"
-      count="2"
-      appearance="line"
-      animation="pulse"
-    ></ngx-skeleton-loader>
-
-    
     <app-list-view
-      *ngIf="tasksList$ | async"
+      *ngIf="tasksList$ | async as items; else loadingTpl"
       [items]="items"
       [options]="{ itemSize: 37 }"
       (selectionChanged)="onSelectedTaskList($event)"
@@ -28,3 +20,4 @@
     New List
   </button>
 </div>
+<ng-template #loadingTpl> Loading... </ng-template>
