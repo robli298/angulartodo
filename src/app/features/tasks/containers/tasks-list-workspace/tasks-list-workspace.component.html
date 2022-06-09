@@ -1,17 +1,22 @@
 <div class="tasks-area">
-  <div class="tasks-area__list_area">
-    <app-list-view
-      *ngIf="tasksList$ | async as items; else loadingTpl"
-      [items]="items"
-      [options]="{ itemSize: 37 }"
-      (selectionChanged)="onSelectedTaskList($event)"
-    >
-      <!-- list item template-->
-      <ng-template appListViewItem let-item>
-        <span class="material-icons"> list </span>
-        <span>{{ item.label }}</span>
-      </ng-template>
-    </app-list-view>
+  <div
+    class="tasks-area__list_area"
+    *ngIf="tasksList$ | withLoading | async as obs"
+  >
+    <ng-template [ngIf]="obs.value">
+      <app-list-view
+        [items]="obs.value"
+        [options]="{ itemSize: 37 }"
+        (selectionChanged)="onSelectedTaskList($event)"
+      >
+        <!-- list item template-->
+        <ng-template appListViewItem let-item>
+          <span class="material-icons"> list </span>
+          <span>{{ item.label }}</span>
+        </ng-template>
+      </app-list-view>
+    </ng-template>
+    <ng-template [ngIf]="obs.isLoading"> Loading... </ng-template>
   </div>
 </div>
 <div class="tasks-control">
@@ -20,4 +25,3 @@
     New List
   </button>
 </div>
-<ng-template #loadingTpl> Loading... </ng-template>
